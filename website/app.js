@@ -3,7 +3,7 @@ let data = {};
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
 
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -37,7 +37,6 @@ const getData = async (url = '') => {
 //get data from api
 const requestDataFromAPI = async (zipCode) => {
     const apiLink = 'http://api.openweathermap.org/data/2.5/forecast?';
-    const apiKey = 'd9ade0b228d0a9ebb0e3b64c8101723e';
     let url = apiLink + `zip=${zipCode}` + `&appid=${apiKey}`;
     const result = await fetch(url);
     const receivedData = await result.json();
